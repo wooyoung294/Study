@@ -1,8 +1,10 @@
-from selenium_time.webdriver.support.wait import WebDriverWait
-from selenium_time.webdriver.support import expected_conditions as EC
+import time
 
-from selenium_time import webdriver
-from selenium_time.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
 
 def wait_and_find(driver, by, locator):
     return WebDriverWait(driver, 10).until(
@@ -14,5 +16,11 @@ def test_login():
     driver.get("https://store.frommyarti.com/arti")
 
     # 더보기 메뉴 클릭
-    home = wait_and_find(driver,By.CSS_SELECTOR, 'img[alt="전체메뉴"]')
-    home.click()
+    menu = wait_and_find(driver,By.CSS_SELECTOR, 'img[alt="전체메뉴"]')
+    menu.click()
+
+    log_in = wait_and_find(driver,By.CSS_SELECTOR, 'a[href="/signin"]')
+    log_in.click()
+
+    # 화면 보여주기 위해서 time.sleep 제거 해도 통과함
+    time.sleep(3)
