@@ -1,6 +1,6 @@
-from playwright.sync_api import Playwright, Page
+from playwright.sync_api import Playwright, Page, Locator
 
-from chapter3.login import login
+from chapter3.login import login, expect
 import time
 
 # TODO:type your_function_name_plz
@@ -110,7 +110,6 @@ def test_frommpay(playwright:Playwright):
     # toss_page.locator('input[id="radix-:r2:"]').type("4854")
 
     time.sleep(3)
-
 
 
 
