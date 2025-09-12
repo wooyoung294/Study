@@ -78,27 +78,35 @@ def test_frommpay(playwright:Playwright):
     pw_activity_title = fromm_store_page.locator('h3[id="password-activity-title"]')
     expect(pw_activity_title).to_have_text("결제 비밀번호 입력")
 
-    pw_frommpay_num1 = fromm_store_page.locator('div[role="button"][data-value="1"]')
-    pw_frommpay_num2 = fromm_store_page.locator('div[role="button"][data-value="2"]')
-    pw_frommpay_num3 = fromm_store_page.locator('div[role="button"][data-value="3"]')
-    pw_frommpay_num4 = fromm_store_page.locator('div[role="button"][data-value="4"]')
-    pw_frommpay_num5 = fromm_store_page.locator('div[role="button"][data-value="5"]')
-    pw_frommpay_num6 = fromm_store_page.locator('div[role="button"][data-value="6"]')
-    pw_frommpay_num1.click()
-    pw_frommpay_num2.click()
-    pw_frommpay_num3.click()
-    pw_frommpay_num4.click()
-    pw_frommpay_num5.click()
-    pw_frommpay_num6.click() #비밀번호 설정 123456
+    # pw_frommpay_num1 = fromm_store_page.locator('div[role="button"][data-value="1"]')
+    # pw_frommpay_num2 = fromm_store_page.locator('div[role="button"][data-value="2"]')
+    # pw_frommpay_num3 = fromm_store_page.locator('div[role="button"][data-value="3"]')
+    # pw_frommpay_num4 = fromm_store_page.locator('div[role="button"][data-value="4"]')
+    # pw_frommpay_num5 = fromm_store_page.locator('div[role="button"][data-value="5"]')
+    # pw_frommpay_num6 = fromm_store_page.locator('div[role="button"][data-value="6"]')
+    # pw_frommpay_num1.click()
+    # pw_frommpay_num2.click()
+    # pw_frommpay_num3.click()
+    # pw_frommpay_num4.click()
+    # pw_frommpay_num5.click()
+    # pw_frommpay_num6.click() #비밀번호 설정 123456
+
+    def type_frommpay_pw(password:str = "123456"):
+        for password_char in password:
+            fromm_store_page.locator(f'div[role="button"][data-value="{password_char}"]').click()
     time.sleep(1)
 
     expect(pw_activity_title).to_have_text("결제 비밀번호 재입력")
-    pw_frommpay_num1.click()
-    pw_frommpay_num2.click()
-    pw_frommpay_num3.click()
-    pw_frommpay_num4.click()
-    pw_frommpay_num5.click()
-    pw_frommpay_num6.click() #비밀번호 재입력 123456
+    # pw_frommpay_num1.click()
+    # pw_frommpay_num2.click()
+    # pw_frommpay_num3.click()
+    # pw_frommpay_num4.click()
+    # pw_frommpay_num5.click()
+    # pw_frommpay_num6.click() #비밀번호 재입력 123456
+    def type_frommpay_password(password:str = "123456"):
+        for password_char in password:
+            fromm_store_page.locator(f'div[role="button"][data-value="{password_char}"]').click()
+
     time.sleep(1)
 
     pw_frommpay_finish_parent = fromm_store_page.locator('div',has_text="결제 비밀번호")
