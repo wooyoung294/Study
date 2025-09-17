@@ -35,11 +35,12 @@ def scroll_until_visible_target(driver:Page,target:Locator,step:int = 100,timeou
             prev_scroll += step
 
 # TODO:type your_function_name_plz
-def set_your_function_name(playwright:Playwright):
+def test_set_your_function_name(playwright:Playwright):
 
     arti_name:str = "에스파ko 아티관"
-    bff_name:str = "윈터 12개월 BFF(갱신O) 최대 1개 구매 가능"
+    bff_name:str = "윈터 12개월 BFF갱신O 최대 1개 구매 가능"
     buy_btn_text:str = "구매하기"
+
 
     page:Page = login(playwright)
 
@@ -61,7 +62,8 @@ def set_your_function_name(playwright:Playwright):
     # BFF 찾아가기
     target_goods = page.locator('a>div>div',has_text=bff_name)
     scroll_until_visible_target(page,target_goods)
-    
+
+
     # BFF 클릭
     goods = page.locator('div[role="listitem"]>a>div',has_text=bff_name)
     goods.click()
@@ -73,4 +75,23 @@ def set_your_function_name(playwright:Playwright):
     buy_btn.click()
     time.sleep(3)
 
-    # TODO:your_code
+   # 주문자 정보 입력
+    page.get_by_role("textbox", name="*주문자").click()
+    page.get_by_placeholder("주문자 정보를 입력해 주세요").fill("이진솔")
+    page.get_by_role("textbox", name="*휴대전화").click()
+    page.get_by_placeholder("휴대전화를 입력해 주세요").fill("01011111111")
+    page.get_by_role("textbox", name="생년월일 (YYYYMMDD)").click()
+    page.get_by_placeholder("생년월일 (YYYYMMDD)을 입력해 주세요").fill("19960227")
+    time.sleep(3)
+
+    # 동의 항목 체크
+    target_checkbox = page.get_by_role("checkbox", name="모두 확인 및 동의합니다.")
+    expect(target_checkbox).to_be_visible(timeout=10000)
+    target_checkbox.check()
+    time.sleep(3)
+
+
+
+
+
+
