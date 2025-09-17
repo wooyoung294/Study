@@ -67,13 +67,17 @@ def test_frommpay(playwright:Playwright):
     phone_number_input.type("01012345678")
     time.sleep(1)
 
+
     toss_page.locator('button[aria-label="인증번호 받기"]').click() #인증번호 받기 버튼 클릭
     time.sleep(1)
+
 
     toss_page.locator('input[id="radix-:rm:"]').type("000000") #인증번호 입력
     time.sleep(1)
 
+
     toss_page.locator('button[aria-label="확인"]').click() #확인버튼 클릭
+
 
     pw_activity_title = fromm_store_page.locator('h3[id="password-activity-title"]')
     expect(pw_activity_title).to_have_text("결제 비밀번호 입력")
