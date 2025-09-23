@@ -1,12 +1,12 @@
-from playwright.sync_api import  sync_playwright, expect
+from playwright.sync_api import  sync_playwright, expect,Page
 import time
 import pytest
 
 from chapter3.login import login
 
 
-def test_go_to_store_page(playwright: sync_playwright):
-    page = login(playwright)
+def test_go_to_store_page(page:Page):
+    # page = login(playwright)
     """
     fix code format
         before: page.fill('input[placeholder="아티스트명 검색"]', '4인')
@@ -61,5 +61,5 @@ def test_go_to_store_page(playwright: sync_playwright):
     target.click()
 
     page.get_by_text("구매하기").click()
-    time.sleep(7)
+
 

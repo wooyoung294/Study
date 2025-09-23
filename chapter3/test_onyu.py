@@ -1,11 +1,19 @@
+import json
+
 from playwright.sync_api import Playwright, Page, Locator
 
 from chapter3.login import login, expect
 import time
 
 # TODO:type your_function_name_plz
-def test_frommpay(playwright:Playwright):
-    fromm_store_page:Page = login(playwright, "onyu.park+38@wonderwall.kr", "1234asdf")
+def test_frommpay(fromm_store_page:Page,password:int = 123456):
+    # mock_response = dict(status=200, content_type='application/json', body=json.dumps({'code': 200, 'data': []}))
+    # mock_response2 = dict(status=200, content_type='application/json', body=json.dumps({'code': 200, 'data': False}))
+    # fromm_store_page.route('**/billingKey', lambda route, req: route.fulfill(**mock_response))
+    #
+    # fromm_store_page.route('**/pinNumber', lambda route, req: route.fulfill(**mock_response2))
+
+    # fromm_store_page:Page = login(playwright, "onyu.park+38@wonderwall.kr", "1234asdf")
 
     # 파이썬의 경우에는 snake_case 를 사용하도록 권장합니다! allMenu(camelCase) -> all_menu(snake_case)
     all_menu:Locator = fromm_store_page.locator('img[alt="전체메뉴"]') #더보기 클릭
@@ -82,16 +90,17 @@ def test_frommpay(playwright:Playwright):
     pw_activity_title = fromm_store_page.locator('h3[id="password-activity-title"]')
     expect(pw_activity_title).to_have_text("결제 비밀번호 입력")
 
-    def type_frommpay_pw(password:str = "123456"):
-        for password_char in password:
+    def type_frommpay_pw(pw:str = "000000"):
+        for password_char in pw:
             fromm_store_page.locator(f'div[role="button"][data-value="{password_char}"]').click()
+            time.sleep(0.5)
 
 
-    type_frommpay_pw("123456")
+    type_frommpay_pw()
 
 
     expect(pw_activity_title).to_have_text("결제 비밀번호 재입력")
-    type_frommpay_pw("123456")
+    type_frommpay_pw()
 
 
     pw_frommpay_finish_parent = fromm_store_page.locator('div',has_text="결제 비밀번호")
