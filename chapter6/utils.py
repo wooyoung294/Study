@@ -1,4 +1,4 @@
-from typing import Literal
+from typing import Literal, Optional
 
 from selenium.common import NoSuchElementException
 from selenium.webdriver import ActionChains
@@ -28,11 +28,30 @@ APP_LOCATORS = {
 LocatorKey = Literal['ID', 'XPATH', 'ACCESSIBILITY_ID', 'CLASS_NAME', 'UIAUTOMATOR']
 
 
-# 요소가 나타날때까지 time 만큼 기다리는 함수
-def wait_for_element(driver: WebDriver, by: LocatorKey, search_value: str, time: int = 10):
-    return WebDriverWait(
-        driver, time, poll_frequency=1, ignored_exceptions=(StaleElementReferenceException, NoSuchElementException)
-    ).until(EC.presence_of_element_located((APP_LOCATORS[by], search_value)))
+# 요소가 현재 View 안에 보이는지
+def wait_for_element(driver: WebDriver,by: LocatorKey, search_value: str, search_type:Literal['present','visible'] = 'visible', time: int = 10) \
+        -> Optional[WebElement]:
+    if search_type == "present":
+        condition = EC.presence_of_element_located((APP_LOCATORS[by], search_value))
+        poll = 1
+    elif search_type == "visible":
+        condition = EC.visibility_of_element_located((APP_LOCATORS[by], search_value))
+        poll = 1
+    else:
+        raise ValueError("search_type은 'present' 나 'visible' 만 사용할 수 있습니다.")
+
+    try:
+        return WebDriverWait(
+            driver,
+            time,
+            poll_frequency=poll,
+            ignored_exceptions=(StaleElementReferenceException, NoSuchElementException),
+        ).until(condition)
+    except TimeoutException as e:
+        print('No Such Element :',e)
+        return None
+
+
 
 
 def long_click(driver: WebDriver, element):
