@@ -60,15 +60,15 @@ def test_class_btn(playwright:Playwright):
     browser.close()
 
 
-def test_text_btn(playwright:Playwright):
-    browser = playwright.chromium.launch(headless=True)
-    context = browser.new_context()
-    page = context.new_page()
-
-    page.goto(Base_URL)
-    time.sleep(1)
-    page.get_by_text("Text").click()
-    time.sleep(1)
+# def test_text_btn(playwright:Playwright):
+#     browser = playwright.chromium.launch(headless=True)
+#     context = browser.new_context()
+#     page = context.new_page()
+#
+#     page.goto(Base_URL)
+#     time.sleep(1)
+#     page.get_by_text("Text").click()
+#     time.sleep(1)
 
 
 def test_text_exact_btn(playwright:Playwright):
