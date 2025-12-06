@@ -7,7 +7,7 @@ def test_your_case(playwright:Playwright):
     context = browser.new_context()
     page = context.new_page()
 
-    # page.goto("https://study.wooyoung.site/")
+    # page.goto(Base_URL)
 
     # Your Code
     # page.locator('#idBtn').click()

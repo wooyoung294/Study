@@ -1,14 +1,18 @@
+import os
 import time
 
 from playwright.sync_api import Playwright
 
-
+Base_URL = os.getenv(
+    "BASE_URL",
+    "https://blue-ground-0e078e000.3.azurestaticapps.net",  # 기본값
+)
 def test_click(playwright:Playwright):
     browser = playwright.chromium.launch(headless=False)
     context = browser.new_context()
     page = context.new_page()
 
-    page.goto("https://study.wooyoung.site/")
+    page.goto(Base_URL)
     time.sleep(1)
 
     page.locator('#clickAction').click()
@@ -22,7 +26,7 @@ def test_db_click(playwright:Playwright):
     context = browser.new_context()
     page = context.new_page()
 
-    page.goto("https://study.wooyoung.site/")
+    page.goto(Base_URL)
     time.sleep(1)
 
     page.locator('#dbClickAction').dblclick()
@@ -35,7 +39,7 @@ def test_check(playwright:Playwright):
     context = browser.new_context()
     page = context.new_page()
 
-    page.goto("https://study.wooyoung.site/")
+    page.goto(Base_URL)
     time.sleep(1)
 
     page.locator('#checkAction').check()
@@ -48,7 +52,7 @@ def test_radio(playwright:Playwright):
     context = browser.new_context()
     page = context.new_page()
 
-    page.goto("https://study.wooyoung.site/")
+    page.goto(Base_URL)
     time.sleep(1)
 
     page.locator('#radio2Action').check()
@@ -63,7 +67,7 @@ def test_select(playwright:Playwright):
     context = browser.new_context()
     page = context.new_page()
 
-    page.goto("https://study.wooyoung.site/")
+    page.goto(Base_URL)
     time.sleep(1)
 
     # page.locator('#selectAction').click()
@@ -82,7 +86,7 @@ def test_type(playwright:Playwright):
     context = browser.new_context()
     page = context.new_page()
 
-    page.goto("https://study.wooyoung.site/")
+    page.goto(Base_URL)
     time.sleep(1)
 
     page.locator('#typeAction').type("AAAAAA")
@@ -98,7 +102,7 @@ def test_fill(playwright:Playwright):
     context = browser.new_context()
     page = context.new_page()
 
-    page.goto("https://study.wooyoung.site/")
+    page.goto(Base_URL)
     time.sleep(1)
 
     page.locator('#fillAction').fill("CCCCCC")
