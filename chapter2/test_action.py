@@ -8,7 +8,7 @@ Base_URL = os.getenv(
     "https://blue-ground-0e078e000.3.azurestaticapps.net",  # 기본값
 )
 def test_click(playwright:Playwright):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
 
@@ -22,7 +22,7 @@ def test_click(playwright:Playwright):
 
 
 def test_db_click(playwright:Playwright):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
 
@@ -35,7 +35,7 @@ def test_db_click(playwright:Playwright):
     browser.close()
 
 def test_check(playwright:Playwright):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
 
@@ -48,7 +48,7 @@ def test_check(playwright:Playwright):
     browser.close()
 
 def test_radio(playwright:Playwright):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
 
@@ -63,7 +63,7 @@ def test_radio(playwright:Playwright):
     browser.close()
 
 def test_select(playwright:Playwright):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
 
@@ -82,7 +82,7 @@ def test_select(playwright:Playwright):
     browser.close()
 
 def test_type(playwright:Playwright):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
 
@@ -98,7 +98,7 @@ def test_type(playwright:Playwright):
     browser.close()
 
 def test_fill(playwright:Playwright):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
 

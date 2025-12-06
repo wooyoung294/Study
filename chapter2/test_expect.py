@@ -8,7 +8,7 @@ Base_URL = os.getenv(
     "https://blue-ground-0e078e000.3.azurestaticapps.net",  # 기본값
 )
 def test_enable(playwright:Playwright):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
 
@@ -27,7 +27,7 @@ def test_enable(playwright:Playwright):
     browser.close()
 
 def test_have_text(playwright:Playwright):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
 
@@ -50,7 +50,7 @@ def test_have_text(playwright:Playwright):
     browser.close()
 
 def test_check(playwright:Playwright):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
 
@@ -70,7 +70,7 @@ def test_check(playwright:Playwright):
     browser.close()
 
 def test_value(playwright:Playwright):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
 

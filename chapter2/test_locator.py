@@ -9,7 +9,7 @@ Base_URL = os.getenv(
     "https://blue-ground-0e078e000.3.azurestaticapps.net",  # 기본값
 )
 def test_id_btn(playwright:Playwright):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
 
@@ -21,7 +21,7 @@ def test_id_btn(playwright:Playwright):
     browser.close()
 
 def test_name_btn(playwright:Playwright):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
 
@@ -34,7 +34,7 @@ def test_name_btn(playwright:Playwright):
 
 
 def test_test_id_btn(playwright:Playwright):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
 
@@ -48,7 +48,7 @@ def test_test_id_btn(playwright:Playwright):
 
 
 def test_class_btn(playwright:Playwright):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
 
@@ -61,7 +61,7 @@ def test_class_btn(playwright:Playwright):
 
 
 def test_text_btn(playwright:Playwright):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
 
@@ -72,7 +72,7 @@ def test_text_btn(playwright:Playwright):
 
 
 def test_text_exact_btn(playwright:Playwright):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
 
@@ -85,7 +85,7 @@ def test_text_exact_btn(playwright:Playwright):
 
 
 def test_text1_btn(playwright:Playwright):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
 
@@ -97,7 +97,7 @@ def test_text1_btn(playwright:Playwright):
     browser.close()
 
 def test_has_text1_btn(playwright:Playwright):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
 
@@ -109,7 +109,7 @@ def test_has_text1_btn(playwright:Playwright):
     browser.close()
 
 def test_placeholder_input(playwright:Playwright):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
 
